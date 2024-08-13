@@ -254,6 +254,12 @@ int valid_order(char *str)
 	return (1);	
 }
 
+// .37  |  13.37  |  13 : Passed
+//+.37  | -13.37  | +13 : Passed
+
+//  .  : X
+// +.  : X
+
 double  ft_atod(const char *str)
 {
     int     error;
