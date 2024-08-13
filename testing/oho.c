@@ -63,8 +63,8 @@ double	ft_atoi(const char *str, int *sign, int *error)
         *error = 0;
 		i++;
 	}
-    if (str[i] != '.' && str[i] != 32)
-        return (0.0);
+    // if (str[i] != '.' && str[i] != 32)
+    //     return (0.0);
 	return  (res);  //(res * sign);
 }
 
@@ -104,27 +104,25 @@ static void	skip_rev(const char *str, size_t *index)
 double after_dot(const char *str, int b_exist)
 {
     double	res;
-    int     a_exist;
+    // int     a_exist;
 	size_t	i;
 
 	res = 0.0;
-    a_exist = 0;
+    // a_exist = 0;
 	skip_rev(str, &i);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-        a_exist = 1;
+        // a_exist = 1;
 		res = (res / 10) + (str[i] - '0');
 		i--;
 	}
     //if (str[i] == '.' && ((str[i-1] == 32 && b_exist == 1) || (str[i-1] >= '0' && str[i-1] <= '9')))
-    if (str[i] == '.' && (b_exist == 0 && ((str[i-1] >= '0' && str[i-1] <= '9')) || (b_exist == 1 && str[i-1] == 32)))
+    if (str[i] == '.') //   && (b_exist == 0 && ((str[i-1] >= '0' && str[i-1] <= '9')) || (b_exist == 1 && str[i-1] == 32))
 	    res /= 10;
     else
         res = 0.0;
     return (res);
 }
-
-
 
 // int valid_num(char *str)
 // {
@@ -246,7 +244,7 @@ int valid_order(char *str)
 		if (str[i] == '.')
 		{
 			// printf(" str[%d] = %c | str[%d] = %c \n", i-1, str[i-1], i+1, str[i+1]);
-			if (!is_nb(str[i+1]) && (i != 0 && !is_nb(str[i-1])))
+			if (!is_nb(str[i+1]) && !is_nb(str[i-1]))
 				return (0);
 		}
 		i++;
@@ -254,10 +252,10 @@ int valid_order(char *str)
 	return (1);	
 }
 
-// .37  |  13.37  |  13 : Passed
-//+.37  | -13.37  | +13 : Passed
+// .37  |  13.37  |  13. : Passed
+//+.37  | -13.37  | +13. : Passed
 
-//  .  : X
+//  .-  : X
 // +.  : X
 
 double  ft_atod(const char *str)
@@ -267,15 +265,35 @@ double  ft_atod(const char *str)
     double  res;
 	char 	*s;
 
-	if (!str_is_valide(str) || !valid_order("ft_trdsiimstr"))
+	if (!str_is_valide(str))
 		return (-1);
+	s = ft_strtrim(str, " ");
+	if (!valid_order(s))
+		return (-2);
 	// some logic + review atoi and after dot
     error = 1;
     res = ft_atoi(str, &sign, &error);
-    if (error)
-        return (0.0);
-    res += after_dot(str, error);
+	printf("atoi = %.2f \n", res);
+    // if (error)
+    //     return (0.0);
+	printf("after_dot = %.2f \n", after_dot(str, error));
+	int i = 0;
+	int exist_a = 0;
+	while (str[i])
+	{
+		if (str[i] == '.')
+		{
+			printf("str[%d] = %c \n", i +1, str[i+1]);
+			if (is_nb(str[i+1]))
+				exist_a = 1;
+			break;
+		}
+		i++;
+	}
+	if (exist_a = 1)
+    	res += after_dot(str, error);
     res = res * sign;
+	free(s);
     return (res);
 }
 
@@ -303,21 +321,24 @@ int main(void)
 //  -13.37
 //  -.37
 
+	double a;
 
-	char *str = "   .    ";
+	a = ft_atod("  -3.25  ");
+	printf("\n\na = %.2f \n", a);
+	// char *str = "  .+  ";
 
-	if (str_is_valide(str) == 1)
-		printf("\"%s\" : str is VALID (1)\n", str);
-	else
-		printf("\"%s\" : str is NOT valid (STOP)\n", str);
-	char *soso = ft_strtrim(str, " ");
-	if (valid_order(soso) == 1 && str_is_valide(str))
-	{
-		printf("\"%s\"     : order is VALID (2)\n", soso);
-		printf("YOU CAN PASS TO ITOD now!\n");
-	}
-	else if (str_is_valide(str))
-		printf("\"%s\"     : order is NOT valid (STOP)\n", soso);
+	// if (str_is_valide(str) == 1)
+	// 	printf("\"%s\" : str is VALID (1)\n", str);
+	// else
+	// 	printf("\"%s\" : str is NOT valid (STOP)\n", str);
+	// char *soso = ft_strtrim(str, " ");
+	// if (valid_order(soso) == 1 && str_is_valide(str))
+	// {
+	// 	printf("\"%s\"     : order is VALID (2)\n", soso);
+	// 	printf("YOU CAN PASS TO ITOD now!\n");
+	// }
+	// else if (str_is_valide(str))
+	// 	printf("\"%s\"     : order is NOT valid (STOP)\n", soso);
 
 	// a = ft_atod("   .1337.4242   ");
 	// if (a == -1)
