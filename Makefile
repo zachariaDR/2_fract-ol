@@ -6,29 +6,31 @@
 #    By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 23:02:08 by zadriouc          #+#    #+#              #
-#    Updated: 2024/08/06 20:20:30 by zadriouc         ###   ########.fr        #
+#    Updated: 2024/08/12 02:10:32 by zadriouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fract-ol
 
 CC		= cc
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -O3
 RM		= rm -rf
-LIBMLX	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -O3
+LIBMLX	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
-LIB 	= $(addprefix lib/, ft_putchar_fd ft_putstr_fd ft_strncmp)
-FILES	= $(addprefix srcs/, main events tools math coloring plotting mandelbrot $(LIB))
+LIB 	= $(addprefix lib/, ft_putchar_fd ft_putstr_fd ft_strncmp ft_atoi ft_atod ft_after_dot ft_strlen)
+FRACTS	= $(addprefix fractals/, mandelbrot julia tricorn burningship)
+TOOLS	= $(addprefix tools/, coloring events math init)
+FILES	= $(addprefix srcs/, main $(FRACTS) $(TOOLS) $(LIB))
 
 SRC		= $(FILES:=.c)
 OBJ		= $(FILES:=.o)
 HEADER	= includes/fract_ol.h
 INCLUDE = -I includes
 
-BONUS_FILES = $(addprefix bonus/, $(FILES))
-BONUS_SRC = $(BONUS_FILES:=_bonus.c)
-BONUS_OBJ = $(BONUS_FILES:=_bonus.o)
-#BONUS_HEADER = bonus/fract_ol_bonus.h
+# BONUS_FILES = $(addprefix bonus/, $(FILES))
+# BONUS_SRC = $(BONUS_FILES:=_bonus.c)
+# BONUS_OBJ = $(BONUS_FILES:=_bonus.o)
+# BONUS_HEADER = bonus/fract_ol_bonus.h
 
 #Colors:
 GREEN		=	\e[92;5;118m
