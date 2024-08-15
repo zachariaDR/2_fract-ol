@@ -6,21 +6,23 @@
 #    By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 23:02:08 by zadriouc          #+#    #+#              #
-#    Updated: 2024/08/12 02:10:32 by zadriouc         ###   ########.fr        #
+#    Updated: 2024/08/14 19:00:06 by zadriouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fract-ol
+NAME	= fractol
 
 CC		= cc
 FLAGS	= -Wall -Wextra -Werror -O3
 RM		= rm -rf
 LIBMLX	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
-LIB 	= $(addprefix lib/, ft_putchar_fd ft_putstr_fd ft_strncmp ft_atoi ft_atod ft_after_dot ft_strlen)
+LIB 	= $(addprefix lib/, ft_putchar_fd ft_putstr_fd ft_strncmp ft_strchr ft_strdup ft_strlcpy  ft_strtrim ft_substr\
+			ft_atoi ft_atod ft_after_dot ft_strlen ft_is_digit)
 FRACTS	= $(addprefix fractals/, mandelbrot julia tricorn burningship)
 TOOLS	= $(addprefix tools/, coloring events math init)
-FILES	= $(addprefix srcs/, main $(FRACTS) $(TOOLS) $(LIB))
+CHECKS	= $(addprefix checks/, check_args no_dublicates one_single_dot only_nbs valid_order str_is_valid)
+FILES	= $(addprefix srcs/, fractol $(FRACTS) $(TOOLS) $(LIB) $(CHECKS))
 
 SRC		= $(FILES:=.c)
 OBJ		= $(FILES:=.o)

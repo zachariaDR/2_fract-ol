@@ -1,36 +1,19 @@
 #include "fract_ol.h"
 
-static int	ft_isspace(const char c)
+double	ft_after_dot(const char *str, int dot)
 {
-	return (c == ' ' || c == '\t' || c == '\v' || c == '\r' || c == '\f'
-		|| c == '\n');
-}
-
-static void	skip_rev(const char *str, size_t *index)
-{
-	size_t	i;
-
+	double 	res;
+	int		i;
+	// "-/+/eps|xxx|.|yyy"
+	res = 0;
+	if (dot == 0)
+		return (0.0);
 	i = ft_strlen(str) - 1;
-	while (ft_isspace(str[i]))
-		i--;
-	*index = i;
-}
-
-double after_dot(const char *str)
-{
-    double	res;
-	size_t	i;
-
-	res = 0.0;
-	skip_rev(str, &i);
-	while (str[i] >= '0' && str[i] <= '9')
+	while (is_nb(str[i]))
 	{
 		res = (res / 10) + (str[i] - '0');
 		i--;
 	}
-    if (str[i] == '.')
-	    res /= 10;
-    else
-        res = 0.0;
-    return (res);
+	res /= 10;
+	return (res);
 }

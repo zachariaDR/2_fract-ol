@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 13:49:52 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/08/14 13:31:18 by zadriouc         ###   ########.fr       */
+/*   Created: 2023/11/25 12:06:22 by zadriouc          #+#    #+#             */
+/*   Updated: 2024/08/14 13:31:26 by zadriouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
+	int	start;
+	int	end;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	end = ft_strlen(s1) - 1;
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (0 <= end && ft_strchr(set, s1[end]))
+		end--;
+	if (end == -1)
+		return (ft_substr(s1, start, 0));
+	return (ft_substr(s1, start, end - start + 1));
 }
