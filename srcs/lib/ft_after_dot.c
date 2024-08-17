@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_after_dot.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/15 12:16:01 by zadriouc          #+#    #+#             */
+/*   Updated: 2024/08/15 12:18:40 by zadriouc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 double	ft_after_dot(const char *str, int dot)
 {
-	double 	res;
+	double	res;
 	int		i;
-	// "-/+/eps|xxx|.|yyy"
+
 	res = 0;
 	if (dot == 0)
 		return (0.0);

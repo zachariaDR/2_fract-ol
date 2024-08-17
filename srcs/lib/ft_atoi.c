@@ -6,7 +6,7 @@
 /*   By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:35:56 by zadriouc          #+#    #+#             */
-/*   Updated: 2024/08/14 16:54:07 by zadriouc         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:19:28 by zadriouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 double	ft_atoi(const char *str, int *sign, int *dot)
 {
-	double 	res;
+	double	res;
 	int		i;
-	// "-/+/eps|xxx|.|yyy"
+
 	res = 0;
 	i = 0;
 	if (str[0] == '-' || str[0] == '+')

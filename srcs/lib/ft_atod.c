@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atod.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/15 12:16:06 by zadriouc          #+#    #+#             */
+/*   Updated: 2024/08/15 12:19:06 by zadriouc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 double	ft_atod(const char *str)
 {
-	double 	res;
-	char 	*s;
-	int 	dot;
-	int 	mp;
+	double	res;
+	char	*s;
+	int		dot;
+	int		mp;
 
 	s = NULL;
 	mp = 1;
@@ -17,9 +29,7 @@ double	ft_atod(const char *str)
 		if (valid_order(s))
 		{
 			res = ft_atoi(s, &mp, &dot);
-			// printf(" before . res = %.2f\n", res);
 			res += ft_after_dot(s, dot);
-			// printf(" after . res = %.2f\n", res);
 		}
 		free(s);
 	}

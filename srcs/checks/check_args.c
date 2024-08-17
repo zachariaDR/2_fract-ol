@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/15 11:59:00 by zadriouc          #+#    #+#             */
+/*   Updated: 2024/08/15 12:00:18 by zadriouc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 void	check_args(int ac, char **av)
@@ -7,7 +19,8 @@ void	check_args(int ac, char **av)
 		ft_putstr_fd("Mandelbrot & Tricorn Usage: ./fractol <mandel/tri>\n", 1);
 		ft_putstr_fd("Julia Usage: ./fractol julia RE IM (RE & IM: Optional)\n",
 			1);
-		ft_putstr_fd("Available fractals:\n  --> Mandelbrot (aka mandel)\n  --> Julia (aka julia)\n  --> Tricorn (aka tri)\n",
+		ft_putstr_fd("Available fractals:\n  --> Mandelbrot (aka mandel)", 1);
+		ft_putstr_fd(":\n  --> Julia (aka julia)\n  --> Tricorn (aka tri)\n",
 			1);
 		exit(EXIT_FAILURE);
 	}

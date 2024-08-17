@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/15 14:58:25 by zadriouc          #+#    #+#             */
+/*   Updated: 2024/08/16 00:11:53 by zadriouc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fract_ol.h"
 
 int	draw_fractal(t_fract *fractal, char *query)
@@ -23,7 +35,7 @@ int	main(int ac, char **av)
 	if (!fractal)
 		exit(EXIT_FAILURE);
 	if (ac == 4)
-		init_fract(fractal, av[1], ft_atod(av[2]), ft_atod(av[3]));
+		init_fract(fractal, av[1], ft_atod(av[2]), (ft_atod(av[3]) * -1));
 	else
 		init_fract(fractal, av[1], 0.42, 0.42);
 	init_mlx(fractal);
@@ -34,4 +46,3 @@ int	main(int ac, char **av)
 	mlx_loop(fractal->mlx);
 	return (0);
 }
- 

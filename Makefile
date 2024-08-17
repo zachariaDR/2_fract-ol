@@ -6,7 +6,7 @@
 #    By: zadriouc <zadriouc@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 23:02:08 by zadriouc          #+#    #+#              #
-#    Updated: 2024/08/14 19:00:06 by zadriouc         ###   ########.fr        #
+#    Updated: 2024/08/15 13:09:00 by zadriouc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ RM		= rm -rf
 LIBMLX	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 LIB 	= $(addprefix lib/, ft_putchar_fd ft_putstr_fd ft_strncmp ft_strchr ft_strdup ft_strlcpy  ft_strtrim ft_substr\
-			ft_atoi ft_atod ft_after_dot ft_strlen ft_is_digit)
+			ft_atoi ft_atod ft_after_dot ft_strlen ft_is_digit ft_init_z)
 FRACTS	= $(addprefix fractals/, mandelbrot julia tricorn burningship)
-TOOLS	= $(addprefix tools/, coloring events math init)
+TOOLS	= $(addprefix tools/, coloring events math init events_fcts)
 CHECKS	= $(addprefix checks/, check_args no_dublicates one_single_dot only_nbs valid_order str_is_valid)
 FILES	= $(addprefix srcs/, fractol $(FRACTS) $(TOOLS) $(LIB) $(CHECKS))
 
